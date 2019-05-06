@@ -15,7 +15,7 @@ export default function DisplayPlayersList() {
 
   const deleteItemFromList = event => {
     const updateList = listOfSuperheros.filter(
-      elm => elm.image.url !== event.target.src
+      elm => elm.image.url !== event.target.value
     );
     displayCurrentList(updateList);
   };
@@ -25,12 +25,11 @@ export default function DisplayPlayersList() {
       {listOfSuperheros.map(elem => {
         return (
           <div>
-            <img
-              src={elem.image.url}
-              onClick={deleteItemFromList}
-              className="cards"
-            />
-            <h2>{elem.name}</h2>
+            <img src={elem.image.url} className="cards" />
+            {/* <h2>{elem.name}</h2> */}
+            <button value={elem.image.url} onClick={deleteItemFromList}>
+              {elem.name}
+            </button>
           </div>
         );
       })}
